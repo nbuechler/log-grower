@@ -1,6 +1,8 @@
 # log-grower
 based on mean stack boilerplate
 
+this is an iteration on evgroio
+
 #credits below:
 
 http://meanjs.org/

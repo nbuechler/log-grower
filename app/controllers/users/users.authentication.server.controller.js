@@ -59,9 +59,9 @@ exports.signin = function(req, res, next) {
 		// 	"X-My-Header": "This is a custom header field"
 		// },
 		method: 'POST',
-		email: 'loop@bar.com',
-		password: 'bark',
-		confirmPssword: 'bark'
+		email: 'a@b.com',
+		password: 'aaaa',
+		confirmPssword: 'aaaa'
 	};
 
 	fetchUrl('http://localhost:3000/postRemoteLogin', options, function(error, meta, body){

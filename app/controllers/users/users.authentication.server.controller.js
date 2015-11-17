@@ -58,44 +58,23 @@ exports.signin = function(req, res, next) {
 		// headers:{
 		// 	"X-My-Header": "This is a custom header field"
 		// },
-		method: 'POST',
-		email: 'a@b.com',
-		password: 'aaaa',
-		confirmPssword: 'aaaa'
+		method: 'post',
 	};
 
-	fetchUrl('http://localhost:3000/postRemoteLogin', options, function(error, meta, body){
-		if (error) {
-			res.status(400).send(error);
-		} else {
-			// res.json(user);
-			res.send(body.toString());
-		}
+	var email = req.body.username;
+  var password = req.body.password;
+
+	fetchUrl('http://localhost:3000/postRemoteLogin' + '/?email=' + email + '&password=' + password,
+		options,
+		function(error, meta, body){
+			if (error) {
+				res.status(400).send(error);
+			} else {
+				res.send(body.toString());
+			}
 
 	});
 };
-// /**
-//  * OLDER - DEFAULT - Signin after passport authentication
-//  */
-// exports.signin = function(req, res, next) {
-// 	passport.authenticate('local', function(err, user, info) {
-// 		if (err || !user) {
-// 			res.status(400).send(info);
-// 		} else {
-// 			// Remove sensitive data before login
-// 			user.password = undefined;
-// 			user.salt = undefined;
-//
-// 			req.login(user, function(err) {
-// 				if (err) {
-// 					res.status(400).send(err);
-// 				} else {
-// 					res.json(user);
-// 				}
-// 			});
-// 		}
-// 	})(req, res, next);
-// };
 
 /**
  * Signout

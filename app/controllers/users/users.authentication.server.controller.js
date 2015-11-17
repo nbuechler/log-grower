@@ -60,7 +60,7 @@ exports.signin = function(req, res, next) {
 		// },
 		method: 'post',
 	};
-	
+
 	var email = req.body.username;
   var password = req.body.password;
 
@@ -70,45 +70,11 @@ exports.signin = function(req, res, next) {
 			if (error) {
 				res.status(400).send(error);
 			} else {
-				// res.json(user);
 				res.send(body.toString());
 			}
 
 	});
-
-	// fetch('http://localhost:3000/postRemoteLogin', {
-	//
-	// method: 'post',
-	// headers: {
-	// 	'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
-	// },
-	// body: 'email=' + input.value + '&password=' + pswd.value
-	// })
-
-	// res.send('here;')
 };
-// /**
-//  * OLDER - DEFAULT - Signin after passport authentication
-//  */
-// exports.signin = function(req, res, next) {
-// 	passport.authenticate('local', function(err, user, info) {
-// 		if (err || !user) {
-// 			res.status(400).send(info);
-// 		} else {
-// 			// Remove sensitive data before login
-// 			user.password = undefined;
-// 			user.salt = undefined;
-//
-// 			req.login(user, function(err) {
-// 				if (err) {
-// 					res.status(400).send(err);
-// 				} else {
-// 					res.json(user);
-// 				}
-// 			});
-// 		}
-// 	})(req, res, next);
-// };
 
 /**
  * Signout

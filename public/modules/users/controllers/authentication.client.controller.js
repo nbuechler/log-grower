@@ -28,9 +28,9 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 						// If successful we assign the response to the global user model
 	          localStorage.setItem('currentSession', 1);
 						console.log(response);
-	        } else if (response.customCode == 4031) {
+	        } else if (response.customCode === 4031) {
 	          $scope.error = response.errors[0].msg;
-	        } else if (response.customCode == 4032) {
+	        } else if (response.customCode === 4032) {
 	          $scope.error = response.msg;
 	        } else {
 	          console.error('Unable to login, try again later');

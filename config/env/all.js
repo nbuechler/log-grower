@@ -17,7 +17,11 @@ module.exports = {
 				'public/customLib/bootstrapThemed/narkly-v2/bootstrap.css',
 			],
 			js: [
+				'public/lib/parallax/deploy/parallax.js',
+				'public/lib/d3/d3.js',
 				'public/lib/angular/angular.js',
+				'public/lib/angular-aria/angular-aria.js',
+				'public/lib/angular-material/angular-material.js',
 				'public/lib/angular-resource/angular-resource.js',
 				'public/lib/angular-cookies/angular-cookies.js',
 				'public/lib/angular-animate/angular-animate.js',

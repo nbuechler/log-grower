@@ -2,7 +2,8 @@
 
 angular.module('core').controller('HeaderController', ['$scope', 'Menus',
 	function($scope, Menus) {
-		$scope.authentication = true;
+		$scope.authentication = 0;
+		$scope.lastCredentials = localStorage.getItem('credentials');
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
 

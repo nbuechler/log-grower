@@ -17,6 +17,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 					$location.path('/');
 					// If successful we assign the response to the global user model
 					localStorage.setItem('currentSession', 1);
+					localStorage.setItem('credentials', response);
 					console.log(response);
 				} else if (response.customCode === 4031) {
 					$scope.error = response.errors[0].msg;
@@ -44,6 +45,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 	          $location.path('/');
 						// If successful we assign the response to the global user model
 	          localStorage.setItem('currentSession', 1);
+					  localStorage.setItem('credentials', response);
 						console.log(response);
 	        } else if (response.customCode === 4031) {
 	          $scope.error = response.errors[0].msg;

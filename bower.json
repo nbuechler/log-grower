@@ -1,6 +1,6 @@
 {
-	"name": "mean",
-	"version": "0.0.1",
+	"name": "log-grower",
+	"version": "0.2.5",
 	"description": "Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js",
 	"dependencies": {
 		"bootstrap": "~3",
@@ -13,6 +13,9 @@
 		"angular-sanitize": "~1.2",
 		"angular-bootstrap": "~0.11.2",
 		"angular-ui-utils": "~0.1.1",
-		"angular-ui-router": "~0.2.11"
+		"angular-ui-router": "~0.2.11",
+		"d3": "~3.5.5",
+		"angular-material": "~0.10.0",
+		"parallax": "~2.1.3"
 	}
 }

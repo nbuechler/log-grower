@@ -72,8 +72,22 @@ exports.signin = function(req, res, next) {
  * Signout
  */
 exports.signout = function(req, res) {
-	req.logout();
-	res.redirect('/');
+	var options = {
+		// headers:{
+		// 	"X-My-Header": "This is a custom header field"
+		// },
+		method: 'post',
+	};
+
+	fetchUrl('http://localhost:3000/postRemoteLogout',
+		options,
+		function(error, meta, body){
+			if (error) {
+				res.status(400).send(error);
+			} else {
+				res.redirect('/');
+			}
+	});
 };
 
 /**

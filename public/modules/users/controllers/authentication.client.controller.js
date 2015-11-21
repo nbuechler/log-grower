@@ -8,8 +8,25 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 		$scope.signup = function() {
 			$http.post('/auth/signup', $scope.credentials).success(function(response) {
 
-				// And redirect to the index page
-				$location.path('/');
+				/**
+				 * TODO: It may be worth considering creating a service for this to
+				 * handle all error codes... but later.
+				 */
+				if(response.customCode === 2001){
+					// Redirect to the index page
+					$location.path('/');
+					// If successful we assign the response to the global user model
+					localStorage.setItem('currentSession', 1);
+					console.log(response);
+				} else if (response.customCode === 4031) {
+					$scope.error = response.errors[0].msg;
+				} else if (response.customCode === 4032) {
+					$scope.error = response.msg;
+				} else {
+					console.error('Unable to signup, try again later');
+					$scope.error = 'Unable to signup, try again later';
+				}
+
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
@@ -18,10 +35,10 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 		$scope.signin = function() {
 			$http.post('/auth/signin', $scope.credentials).success(function(response) {
 
-				// TRANSLATE THIS CODE
-					// /**
-	        //  * TODO: It may be worth considering creating a service for this to handle all error codes... but later.
-	        //  */
+					/**
+	         * TODO: It may be worth considering creating a service for this to
+					 * handle all error codes... but later.
+	         */
 	        if(response.customCode === 2001){
 						// Redirect to the index page
 	          $location.path('/');
@@ -34,6 +51,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 	          $scope.error = response.msg;
 	        } else {
 	          console.error('Unable to login, try again later');
+						$scope.error = 'Unable to signup, try again later';
 	        }
 
 

@@ -15,37 +15,29 @@ var _ = require('lodash'),
 /**
  * Signup
  */
-exports.signup = function(req, res) {
-	// For security measurement we remove the roles from the req.body object
-	delete req.body.roles;
+exports.signup = function(req, res, next) {
+	//postRemoteSignup (remote to :3000)
+	var options = {
+		// headers:{
+		// 	"X-My-Header": "This is a custom header field"
+		// },
+		method: 'post',
+		payload: '{}'
+	};
 
-	// Init Variables
-	var user = new User(req.body);
-	var message = null;
+	var email = req.body.email;
+  var password = req.body.password;
+  var confirmPassword = req.body.confirmPassword;
 
-	// Add missing user fields
-	user.provider = 'local';
-	user.displayName = user.firstName + ' ' + user.lastName;
+	fetchUrl('http://localhost:3000/postRemoteSignup' + '/?email=' + email + '&password=' + password + '&confirmPassword=' + confirmPassword,
+		options,
+		function(error, meta, body){
+			if (error) {
+				res.status(400).send(error);
+			} else {
+				res.send(body.toString());
+			}
 
-	// Then save the user
-	user.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			// Remove sensitive data before login
-			user.password = undefined;
-			user.salt = undefined;
-
-			req.login(user, function(err) {
-				if (err) {
-					res.status(400).send(err);
-				} else {
-					res.json(user);
-				}
-			});
-		}
 	});
 };
 
@@ -53,7 +45,7 @@ exports.signup = function(req, res) {
  * Signin remotely authentication
  */
 exports.signin = function(req, res, next) {
-	//postSignUp (remote to :3000)
+	//postRemoteLogin (remote to :3000)
 	var options = {
 		// headers:{
 		// 	"X-My-Header": "This is a custom header field"
@@ -61,7 +53,7 @@ exports.signin = function(req, res, next) {
 		method: 'post',
 	};
 
-	var email = req.body.username;
+	var email = req.body.email;
   var password = req.body.password;
 
 	fetchUrl('http://localhost:3000/postRemoteLogin' + '/?email=' + email + '&password=' + password,

@@ -13,3 +13,66 @@
 .ng-valid.ng-dirty {
 	border-color: #78FA89;
 }
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus, .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+	color: #222222;
+	background-color: #BCBCBC;
+}
+
+span {
+	color: white;
+}
+
+
+
+
+
+.physicContentHome {
+    border: #EB493A 3px solid;
+    border-right: #EB493A 25px solid;
+    background: #2B2323;
+    font-weight: 900;
+		width: 200px
+;
+		height: 30px;
+}
+
+.emotionContentHome {
+    border: #5078A9 3px solid;
+    border-right: #5078A9 25px solid;
+    background: #242628;
+    font-weight: 900;
+		width: 200px
+;
+		height: 30px;
+}
+
+.academicContentHome {
+    border: #8B2E74 3px solid;
+    border-right: #8B2E74 25px solid;
+    background: #272225;
+    font-weight: 900;
+		width: 200px
+;
+		height: 30px;
+}
+
+.communeContentHome {
+    border: #4E981F 3px solid;
+    border-right: #4E981F 25px solid;
+    background: #242721;
+    font-weight: 900;
+		width: 200px
+;
+		height: 30px;
+}
+
+.etherContentHome {
+    border: #D69C30 3px solid;
+    border-right: #D69C30 25px solid;
+    background: #2A2722;
+    font-weight: 900;
+		width: 200px
+;
+		height: 30px;
+}

@@ -3,6 +3,12 @@ based on mean stack boilerplate
 
 this is an iteration on evgroio
 
+so far, this project is sort of full of security holes, so use it at your own risk.
+the express layer is in the process of being migrated to another microservice.
+and on that note, the idea is to use JWT tokens as a microservice approach.
+the point of the log-growers service is to actually take inputs from users and
+store it through the core service layer which is also a little bit incomplete.
+
 #credits below:
 
 http://meanjs.org/

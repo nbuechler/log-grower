@@ -85,7 +85,7 @@ exports.signout = function(req, res) {
 			if (error) {
 				res.status(400).send(error);
 			} else {
-				res.redirect('/');
+				res.send('OK');
 			}
 	});
 };

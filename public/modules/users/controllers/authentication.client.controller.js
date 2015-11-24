@@ -14,11 +14,12 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				 */
 				if(response.customCode === 2001){
 					// Redirect to the index page
-					$location.path('/');
 					// If successful we assign the response to the global user model
 					localStorage.setItem('currentSession', 1);
-					localStorage.setItem('credentials', response);
-					console.log(response);
+					localStorage.setItem('credentials', $scope.credentials.email);
+					setTimeout(function(){
+						window.location.href = window.location.origin;
+					}, 1000);
 				} else if (response.customCode === 4031) {
 					$scope.error = response.errors[0].msg;
 				} else if (response.customCode === 4032) {
@@ -42,11 +43,12 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 	         */
 	        if(response.customCode === 2001){
 						// Redirect to the index page
-	          $location.path('/');
 						// If successful we assign the response to the global user model
 	          localStorage.setItem('currentSession', 1);
-					  localStorage.setItem('credentials', response);
-						console.log(response);
+					  localStorage.setItem('credentials', $scope.credentials.email);
+						setTimeout(function(){
+	          	window.location.href = window.location.origin;
+						}, 1000);
 	        } else if (response.customCode === 4031) {
 	          $scope.error = response.errors[0].msg;
 	        } else if (response.customCode === 4032) {

@@ -23,6 +23,22 @@
 				<a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
 			</li>
 		</ul>
+		<ul class="nav navbar-nav" data-ng-show="authentication > 0">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Reflecting Place</span> <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="/#!/overview">Overview</a>
+					</li>
+					<!-- <li>
+						TODO: Uncomment when the prototype is no longer one.
+						<a href="/#!/map">Map</a>
+					</li> -->
+				</ul>
+			</li>
+		</ul>
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication > 0">
 			<li ui-route="/signup" ng-class="{active: $uiRoute}">
 				<a href="/#!/signup">Sign Up</a>

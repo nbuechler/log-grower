@@ -1,0 +1,207 @@
+.black-text-outline {
+  text-shadow:
+   -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+}
+
+.ng-invalid.ng-dirty {
+	border-color: none;
+}
+.ng-valid.ng-dirty {
+	border-color: none;
+}
+
+
+.box {
+    border-radius: 5px;
+    width: auto;
+    max-width: 225px;
+    max-height: 100px;
+    z-index: 10;
+}
+
+.echoedText {
+    font-size: 100px;
+    opacity: .15;
+    margin-top: -175px;
+    max-width: none;
+    position: relative;
+    z-index: 0;
+}
+
+.editArea {
+    border-color: none;
+    resize: none;
+    height: 200px;
+    width: 200px;
+    text-align: center;
+}
+
+.logJumbotron {
+    background: darkGray;
+}
+
+.physicContent {
+    border: #EB493A 3px solid;
+    border-right: #EB493A 25px solid;
+    background: #2B2323;
+    font-weight: 900;
+}
+
+.physicFadedContent {
+    color: #EB493A;
+}
+
+.emotionContent {
+    border: #5078A9 3px solid;
+    border-right: #5078A9 25px solid;
+    background: #242628;
+    font-weight: 900;
+}
+
+.emotionFadedContent {
+    color: #5078A9;
+}
+
+.academicContent {
+    border: #8B2E74 3px solid;
+    border-right: #8B2E74 25px solid;
+    background: #272225;
+    font-weight: 900;
+}
+
+.academicFadedContent {
+    color: #8B2E74;
+}
+
+.communeContent {
+    border: #4E981F 3px solid;
+    border-right: #4E981F 25px solid;
+    background: #242721;
+    font-weight: 900;
+}
+
+.communeFadedContent {
+    color: #4E981F;
+}
+
+.etherContent {
+    border: #D69C30 3px solid;
+    border-right: #D69C30 25px solid;
+    background: #2A2722;
+    font-weight: 900;
+}
+
+.etherFadedContent {
+    color: #D69C30;
+}
+
+
+.physicBox {
+    border: #EB493A 3px solid;
+    border-right: #EB493A 25px solid;
+    background: #2B2323;
+
+    text-align: center;
+
+    color: #222;
+
+    border-radius: 5px;
+
+
+
+}
+.emotionBox {
+    border: #5078A9 3px solid;
+    border-right: #5078A9 25px solid;
+    background: #242628;
+
+    text-align: center;
+
+    color: #222;
+
+    border-radius: 5px;
+
+
+
+}
+.academicBox {
+    border: #8B2E74 3px solid;
+    border-right: #8B2E74 25px solid;
+    background: #272225;
+
+    text-align: center;
+
+    color: #222;
+
+    border-radius: 5px;
+
+
+
+}
+.communeBox {
+    border: #4E981F 3px solid;
+    border-right: #4E981F 25px solid;
+    background: #242721;
+
+    text-align: center;
+
+    color: #222;
+
+    border-radius: 5px;
+
+
+
+}
+.etherBox {
+    border: #D69C30 3px solid;
+    border-right: #D69C30 25px solid;
+    background: #2A2722;
+
+    text-align: center;
+
+    color: #222;
+
+    border-radius: 5px;
+
+
+}
+
+.marginPaddingBox {
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.globalPadding {
+    margin: 10px;
+}
+
+/*TODO: Refactor out footer later*/
+
+.listWrapper {
+    padding-bottom: 300px;
+}
+
+.footer {
+    position:fixed;
+    width:100%;
+    left:0;
+    bottom:0;
+    margin-bottom: 0;
+}
+
+/*TODO: Refactor out D3 styles later*/
+
+text {
+  font: 10px sans-serif;
+}
+
+.newLogQuick {
+    background: #0CE3AC;
+}
+
+.newLogQuick:hover {
+    background: #00A379;
+}

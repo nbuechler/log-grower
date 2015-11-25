@@ -1,0 +1,38 @@
+.tabContentOverflow {
+  min-height: 300px;
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: auto;
+  background: #111;
+  border-left: #111 solid 3px;
+}
+
+.shape0 {
+  fill: gray;
+}
+
+.shape1 {
+  fill: #222;
+}
+
+.ratioText {
+  fill: white;
+  font-size: 14px;
+}
+
+
+.link {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.node {
+  cursor: move;
+  fill: #ccc;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.node.fixed {
+  fill: #111;
+}

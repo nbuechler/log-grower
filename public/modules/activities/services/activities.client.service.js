@@ -1,10 +1,12 @@
 'use strict';
 
+var api = 'http://localhost:3000/';
+
 //Activities service used to communicate Activities REST endpoints
 angular.module('activities')
 .factory('Activities', ['$resource',
 	function($resource) {
-		return $resource('activities/:activityId', { activityId: '@_id'
+		return $resource(api + 'activities/:activityId', { activityId: '@_id'
 		}, {
 			update: {
 				method: 'PUT'
@@ -15,6 +17,6 @@ angular.module('activities')
 //PublicActivities service used to communicate Activities REST endpoints
 .factory('PublicActivities', ['$resource',
 	function($resource) {
-		return $resource('publicActivities');
+		return $resource(api + 'publicActivities');
 	}
 ]);

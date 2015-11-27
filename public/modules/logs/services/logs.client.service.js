@@ -1,10 +1,12 @@
 'use strict';
 
+var api = 'http://localhost:3000/';
+
 //Logs service used to communicate Logs REST endpoints
 angular.module('logs')
 .factory('Logs', ['$resource',
 	function($resource) {
-		return $resource('logs/:logId', { logId: '@_id'
+		return $resource(api + 'logs/:logId', { logId: '@_id'
 		}, {
 			update: {
 				method: 'PUT'

@@ -8,6 +8,7 @@ module.exports = {
 			css: [
 				'public/lib/angular-material/angular-material.css',
 				'public/customLib/bootstrapThemed/narkly-v2/bootstrap.css',
+				'public/lib/fontawesome/css/font-awesome.css',
 			],
 			js: [
 				'public/lib/parallax/deploy/parallax.js',

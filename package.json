@@ -1,7 +1,7 @@
 {
   "name": "log-grower",
   "description": "Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "author": "Nathaniel Buechler",
   "engines": {
     "node": "0.10.x",

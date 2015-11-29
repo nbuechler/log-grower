@@ -6,7 +6,7 @@ var api = 'http://localhost:3000/';
 angular.module('logs')
 .factory('Logs', ['$resource',
 	function($resource) {
-		return $resource(api + 'logs/:logId', { logId: '@_id'
+		return $resource(api + 'logs/:logId/?user_id=' + localStorage.getItem('_id'), { logId: '@_id'
 		}, {
 			update: {
 				method: 'PUT'
@@ -17,6 +17,6 @@ angular.module('logs')
 //PublicLogs service used to communicate Activities REST endpoints
 .factory('PublicLogs', ['$resource',
 	function($resource) {
-		return $resource('publicLogs');
+		return $resource(api + 'publicLogs');
 	}
 ]);

@@ -6,7 +6,7 @@ var api = 'http://localhost:3000/';
 angular.module('activities')
 .factory('Activities', ['$resource',
 	function($resource) {
-		return $resource(api + 'activities/:activityId', { activityId: '@_id'
+		return $resource(api + 'activities/:activityId/?user_id=' + localStorage.getItem('_id'), { activityId: '@_id'
 		}, {
 			update: {
 				method: 'PUT'

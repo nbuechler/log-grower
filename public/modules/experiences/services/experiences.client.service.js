@@ -6,7 +6,7 @@ var api = 'http://localhost:3000/';
 angular.module('experiences')
 .factory('Experiences', ['$resource',
 	function($resource) {
-		return $resource(api + 'experiences/:experienceId', { experienceId: '@_id'
+		return $resource(api + 'experiences/:experienceId/?user_id=' + localStorage.getItem('_id'), { experienceId: '@_id'
 		}, {
 			update: {
 				method: 'PUT'
@@ -17,6 +17,6 @@ angular.module('experiences')
 //PublicExperiences service used to communicate Experiences REST endpoints
 .factory('PublicExperiences', ['$resource',
 	function($resource) {
-		return $resource('publicExperiences');
+		return $resource(api + 'publicExperiences');
 	}
 ]);

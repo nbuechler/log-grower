@@ -5,7 +5,8 @@ angular.module('experiences').controller('ExperiencesController',
 ['$scope', '$stateParams', '$location', 'Authentication', 'Experiences',
 'PublicExperiences', 'Activities',
 	function($scope, $stateParams, $location, Authentication, Experiences, PublicExperiences, Activities) {
-		$scope.authentication = Authentication;
+		$scope.authentication = {user : {id: null}};
+		$scope.authentication.user._id = localStorage.getItem('_id');
 
 		$scope.updateName = function() {
 			//Set the experience name to the sum of its parts
@@ -43,7 +44,8 @@ angular.module('experiences').controller('ExperiencesController',
 								importance: this.importance,
 								privacy: this.privacy ? this.privacy : 0,
 								firstActivity: $scope.selectedActivity ? $scope.selectedActivity._id : null,
-								seconds: calculatedSeconds ? calculatedSeconds : 0
+								seconds: calculatedSeconds ? calculatedSeconds : 0,
+								user: {_id: localStorage.getItem('_id')}
 			});
 
 			// Redirect after save

@@ -5,7 +5,8 @@ angular.module('logs').controller('LogsController',
 ['$scope', '$stateParams', '$location', 'Authentication', 'Logs',
 'PublicLogs', 'Experiences',
 	function($scope, $stateParams, $location, Authentication, Logs, PublicLogs, Experiences) {
-		$scope.authentication = Authentication;
+		$scope.authentication = {user : {id: null}};
+		$scope.authentication.user._id = localStorage.getItem('_id');
 
 		// Create new Log
 		$scope.create = function() {
@@ -24,6 +25,7 @@ angular.module('logs').controller('LogsController',
                 etherContentLength: this.etherContent ? this.etherContent.length : 0,
                 privacy: this.privacy ? this.privacy : 0,
 								firstExperience: $scope.selectedExperience ? $scope.selectedExperience._id : null,
+								user: {_id: localStorage.getItem('_id')}
 			});
 
 			// Redirect after save

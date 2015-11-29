@@ -3,7 +3,8 @@
 // Activities controller
 angular.module('activities').controller('ActivitiesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Activities', 'PublicActivities',
 	function($scope, $stateParams, $location, Authentication, Activities, PublicActivities) {
-		$scope.authentication = Authentication;
+		$scope.authentication = {user : {id: null}};
+		$scope.authentication.user._id = localStorage.getItem('_id');
 
 		// Create new Activity
 		$scope.create = function() {
@@ -11,8 +12,9 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
 			var activity = new Activities ({
 				name: this.name,
                 description: this.description,
-                importance: this.importance,
-								privacy: this.privacy ? this.privacy : 0
+                importance: this.importance ? this.importance : 50,
+								privacy: this.privacy ? this.privacy : 0,
+								user: {_id: localStorage.getItem('_id')}
 			});
 
 			// Redirect after save

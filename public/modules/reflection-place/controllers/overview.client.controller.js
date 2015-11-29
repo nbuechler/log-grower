@@ -2,7 +2,8 @@
 
 angular.module('reflection-place').controller('OverviewController', ['$scope', '$modal', '$log', '$stateParams', '$location', 'Authentication', 'Logs', 'Activities', 'Experiences',
 	function($scope, $modal, $log, $stateParams, $location, Authentication, Logs, Activities, Experiences) {
-		$scope.authentication = Authentication;
+		$scope.authentication = {user : {id: null}};
+		$scope.authentication.user._id = localStorage.getItem('_id');
 
 		/*
 		 * Tabs used to create destinct sections of the page.

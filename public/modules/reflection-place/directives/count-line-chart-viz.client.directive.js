@@ -1,8 +1,7 @@
 'use strict';
 
-angular.module('logs').directive('countLineChartViz', ['Logs', 'Authentication',
-	function(Logs, Authentication) {
-
+angular.module('logs').directive('countLineChartViz', ['Logs',
+	function(Logs) {
 
 		return {
 			templateUrl: 'modules/reflection-place/templates/countLineChartViz.html',
@@ -18,7 +17,7 @@ angular.module('logs').directive('countLineChartViz', ['Logs', 'Authentication',
       				var etherContentData = [];
       				var dateData = [];
       				for (var i = 0; i < response.length; i++) {
-      						if (response[i].user._id === Authentication.user._id) {
+      						if (response[i].user._id === localStorage.getItem('_id')) {
       								allUserLogData.push(
 												{
 													'created' : response[i].created,
@@ -46,7 +45,7 @@ angular.module('logs').directive('countLineChartViz', ['Logs', 'Authentication',
 							 * give log entry.
 							 */
 
-							var margin = {top: 20, right: 20, bottom: 30, left: 20},
+							var margin = {top: 20, right: 20, bottom: 80, left: 20},
 							    width = 400 - margin.left - margin.right,
 							    height = 300 - margin.top - margin.bottom;
 
@@ -110,7 +109,12 @@ angular.module('logs').directive('countLineChartViz', ['Logs', 'Authentication',
 							  svg.append('g')
 							      .attr('class', 'x axis')
 							      .attr('transform', 'translate(0,' + height + ')')
-							      .call(xAxis);
+							      .call(xAxis)
+									.selectAll('text')
+										.style('text-anchor', 'end')
+										.attr('dx', '-.8em')
+										.attr('dy', '.15em')
+										.attr('transform', function(d) { return 'rotate(-65)'; });
 
 							  svg.append('g')
 							      .attr('class', 'y axis')

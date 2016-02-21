@@ -1,11 +1,8 @@
-which node
-which npm
-echo 'done whiches'
-npm -v
+sudo npm -v
 echo 'here -- done version'
 pwd
 cd ..
-npm install -g
-npm install
+sudo npm install -g
+sudo npm install
 echo 'npm done, bower next'
 bower install

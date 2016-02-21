@@ -21,7 +21,7 @@ deploy:
   access_key_id: AKIAIEAMLPHO36E7S73Q
   secret_access_key: *24314640
   bucket: log-grower-bucket
-  key: latest-lg
+  key: latest-lg.zip
   bundle_type: zip
   application: log-grower
   deployment_group: logro-development-group
@@ -29,4 +29,4 @@ deploy:
 before_deploy:
   - zip -r latest-lg app/* config/* public/* scripts/* test/* .bowerrc .csslintrc .gitignore .jshintrc .slugignore .travis.yml appspec.yml LICENSE package.json Procfile README.md server.js
   - mkdir -p dpl_cd_upload
-  - mv latest-lg dpl_cd_upload/latest-lg
+  - mv latest-lg.zip dpl_cd_upload/latest-lg.zip

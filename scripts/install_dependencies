@@ -7,4 +7,5 @@ pwd
 cd ..
 npm install -g
 npm install
+echo 'npm done, bower next'
 bower install

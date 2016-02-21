@@ -1,12 +1,32 @@
 language: node_js
 sudo: false
+services:
+- mongodb
 node_js:
 - '0.10'
 env:
 - NODE_ENV=travis
-# services:
-# - mongodb
-# deploy:
-#   provider: heroku
-#   api_key:
-#     secure: r82VwsMAgvpKa3AUwwJfo4+pDDO8ulj9vp+dEIV/ov/P3j6Uj63XomVB/K/pKCr2fsuT/wWZl6telNk6H+SZ9xLwU1zs5kOBSF8n+yBE/QIP3SBp/aeG/MhPbb2RMaIDGNnq0acalp7QOhPKzEzJvuQrmkuS8ASkXe9sX38f0SSZYZmWdig8CfTS69pJqzCoJBan2LS2QP+D8U+3gPPz1XkLrPTBrJw94V5U8GCZkTNJJ4tuVvPEkOQYtM91X0tuU+UKiSEnuyr21I2DErMd/4kgvqATXA52Dkj4U1k+1dKwI1kjN/QD4ea1K6dI1vmnu8aJwBRWIYDJcwDMM2os9Zlw9mKKp2Yn/qSlokG5DstjJiF0+M2yV8Vb8Q0INQ7XlSG1qvwiLIFqORvWWwMf5KenhWu3pJvKhsTYZWD+imzYsFWOP0IZdE5mXO9js4+dhT4de42D7qIwtivkXvV4SFYjeAwHNk4osYlC8eQif7nXSi7C9COlNwdIHKlV3BaySQI53j76uQt2KRMwuHBl4w5g7PJwumpY3EeDdbyBcMM/Uy3OLjMedNLl6DCFNM4I6YwJC87Sr957eSR9t8N3LYlQd6E0HOh4v3Xx9diWEsuwanemwZ4juxj7dG8U6BdeYFXtkbE39gy61FM5AqVw/97vx72nVV7p6RNEVyg1Doo=
+deploy:
+- provider: s3
+  access_key_id: AKIAIEAMLPHO36E7S73Q
+  secret_access_key: &24314640
+    secure: odOjsW3uSH1TePNv4jV65Qo2csId1vT2kBogHZvkXjsT0jmSZSLPx2m0hXd+KzjDgnjnO++GqrL0cOPZNtDYh6PDzJpazFrVwHR9pohOrlC2WuB/8Fgw4skF6q3H1yC2JOa/WQ6Eq+GHyXUIXaFI7UcNi5eQzgYreCqCH4oCDBN1RGsxZ03a/+ZGblavmkyJ/RiETwBhQnGOUbGsZwUBrviQxxVTWlST8UZYQl1SSRcn+QdmnQYDTZdAUt7L6hjZyVQUK4tZ8a0UTOgtvHJrsfP85WRnebhaNDXCBQmhmTTd/tsm8PgNgkdEH+Su1hCvp3Kjczu5r6CrPhcpgU3WBqDnH/CdwKr/4rITtDNty1sF4FuFVwOC7m5REIHq95lvbbi0bEl9BK/GR3Kt/ZZl0Ua+5Ni0fA+M7iPBl/P0nl3zh8l2fxH18ro+v6L4D0VjBJDLkzY/VttEyoqCmt/KOrjQ60wORQXV1Apr0rSfXCv83ySBJVql6cOyH9PwAui525/2oC10NFXi2ZVtx2OQx2kHOFPmeiV4EtATaZ99pao4oh03hOlvCTQoRZgpYlYviAN1F+Hd37zkeCFpMQ0vO1rtYBkk2wuBMZSqj0bkWbsy8LTmzuTKzNQfUkL0tlrRcMShMAeDWm340/NWduhW7OSGb+fRPmgfwwPgYyyejso=
+  local_dir: dpl_cd_upload
+  skip_cleanup: true
+  on: &24310220
+    repo: nbuechler/log-grower
+    branch: develop
+  bucket: log-grower-bucket
+- provider: codedeploy
+  access_key_id: AKIAIEAMLPHO36E7S73Q
+  secret_access_key: *24314640
+  bucket: log-grower-bucket
+  key: latest-lg.zip
+  bundle_type: zip
+  application: log-grower
+  deployment_group: logro-development-group
+  on: *24310220
+before_deploy:
+  - zip -r latest-lg app/* config/* public/* scripts/* test/* .bowerrc .csslintrc .gitignore .jshintrc .slugignore .travis.yml appspec.yml bower.json gruntfile.js LICENSE package.json Procfile README.md server.js
+  - mkdir -p dpl_cd_upload
+  - mv latest-lg.zip dpl_cd_upload/latest-lg.zip

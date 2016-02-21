@@ -1,6 +1,6 @@
 'use strict';
 
-var api = 'http://localhost:3000/';
+var api = 'http://52.87.224.145:3000/';
 
 //Experiences service used to communicate Experiences REST endpoints
 angular.module('experiences')

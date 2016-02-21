@@ -29,7 +29,7 @@ exports.signup = function(req, res, next) {
   var password = req.body.password;
   var confirmPassword = req.body.confirmPassword;
 
-	fetchUrl('http://localhost:3000/postRemoteSignup' + '/?email=' + email + '&password=' + password + '&confirmPassword=' + confirmPassword,
+	fetchUrl('http://52.87.224.145:3000/postRemoteSignup' + '/?email=' + email + '&password=' + password + '&confirmPassword=' + confirmPassword,
 		options,
 		function(error, meta, body){
 			if (error) {
@@ -56,7 +56,7 @@ exports.signin = function(req, res, next) {
 	var email = req.body.email;
   var password = req.body.password;
 
-	fetchUrl('http://localhost:3000/postRemoteLogin' + '/?email=' + email + '&password=' + password,
+	fetchUrl('http://52.87.224.145:3000/postRemoteLogin' + '/?email=' + email + '&password=' + password,
 		options,
 		function(error, meta, body){
 			if (error) {
@@ -79,7 +79,7 @@ exports.signout = function(req, res) {
 		method: 'post',
 	};
 
-	fetchUrl('http://localhost:3000/postRemoteLogout',
+	fetchUrl('http://52.87.224.145:3000/postRemoteLogout',
 		options,
 		function(error, meta, body){
 			if (error) {

@@ -1,6 +1,6 @@
 'use strict';
 
-var api = 'http://localhost:3000/';
+var api = 'http://0.0.0.0:3000/';
 
 //Logs service used to communicate Logs REST endpoints
 angular.module('logs')

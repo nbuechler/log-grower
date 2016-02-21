@@ -26,8 +26,8 @@ module.exports = function(app) {
 	app.route('/auth/signout').get(users.signout);
 
 	// Setting the facebook oauth routes
-	app.get('http://localhost:3000/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_location'] }));
-	app.get('http://localhost:3000/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), function(req, res) {
+	app.get('http://0.0.0.0:3000/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_location'] }));
+	app.get('http://0.0.0.0:3000/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), function(req, res) {
 	  res.redirect(req.session.returnTo || '/');
 	});
 

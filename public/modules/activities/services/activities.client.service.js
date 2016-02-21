@@ -1,6 +1,6 @@
 'use strict';
 
-var api = 'http://localhost:3000/';
+var api = 'http://0.0.0.0:3000/';
 
 //Activities service used to communicate Activities REST endpoints
 angular.module('activities')

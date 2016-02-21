@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/mean-dev',
+	db: 'mongodb://0.0.0.0/mean-dev',
 	app: {
 		title: 'log-grower - Development Environment'
 	},

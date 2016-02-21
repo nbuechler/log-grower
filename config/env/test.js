@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/mean-test',
+	db: 'mongodb://0.0.0.0/mean-test',
 	port: 2001,
 	app: {
 		title: 'log-grower - Test Environment'

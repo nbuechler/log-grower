@@ -27,6 +27,6 @@ deploy:
   deployment_group: logro-development-group
   on: *24310220
 before_deploy:
-  - zip -r latest-lg app/* config/* public/* scripts/* test/* .bowerrc .csslintrc .gitignore .jshintrc .slugignore .travis.yml appspec.yml LICENSE package.json Procfile README.md server.js
+  - zip -r latest-lg app/* config/* public/* scripts/* test/* .bowerrc .csslintrc .gitignore .jshintrc .slugignore .travis.yml appspec.yml bower.json LICENSE package.json Procfile README.md server.js
   - mkdir -p dpl_cd_upload
   - mv latest-lg.zip dpl_cd_upload/latest-lg.zip

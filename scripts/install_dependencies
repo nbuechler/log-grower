@@ -7,3 +7,4 @@ pwd
 cd ..
 npm install -g
 npm install
+bower install

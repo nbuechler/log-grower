@@ -121,6 +121,12 @@ module.exports = function(grunt) {
 			}
 		},
 		env: {
+			prod: {
+				NODE_ENV: 'production'
+			},
+			dev: {
+				NODE_ENV: 'development'
+			},
 			test: {
 				NODE_ENV: 'test'
 			},
@@ -159,6 +165,12 @@ module.exports = function(grunt) {
 
 	// Default task(s).
 	grunt.registerTask('default', ['lint', 'concurrent:default']);
+
+	// Development task(s).
+	grunt.registerTask('dev', ['env:dev', 'lint', 'concurrent:default']);
+
+	// Development task(s).
+	grunt.registerTask('prod', ['env:prod', 'lint', 'concurrent:default']);
 
 	// Debug task.
 	grunt.registerTask('debug', ['lint', 'concurrent:debug']);

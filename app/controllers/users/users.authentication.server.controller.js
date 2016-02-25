@@ -7,6 +7,7 @@ var _ = require('lodash'),
 	errorHandler = require('../errors.server.controller'),
 	mongoose = require('mongoose'),
 	passport = require('passport'),
+	config = require('../../../config/config'),
 	User = mongoose.model('User');
 
 	var fetchUrl = require('fetch').fetchUrl;
@@ -29,7 +30,7 @@ exports.signup = function(req, res, next) {
   var password = req.body.password;
   var confirmPassword = req.body.confirmPassword;
 
-	fetchUrl('http://52.87.224.145:3000/postRemoteSignup' + '/?email=' + email + '&password=' + password + '&confirmPassword=' + confirmPassword,
+	fetchUrl('http://' + config.ip + ':' + config.gatewayPort + '/postRemoteSignup' + '/?email=' + email + '&password=' + password + '&confirmPassword=' + confirmPassword,
 		options,
 		function(error, meta, body){
 			if (error) {
@@ -56,7 +57,7 @@ exports.signin = function(req, res, next) {
 	var email = req.body.email;
   var password = req.body.password;
 
-	fetchUrl('http://52.87.224.145:3000/postRemoteLogin' + '/?email=' + email + '&password=' + password,
+	fetchUrl('http://' + config.ip + ':' + config.gatewayPort + '/postRemoteLogin' + '/?email=' + email + '&password=' + password,
 		options,
 		function(error, meta, body){
 			if (error) {
@@ -79,7 +80,7 @@ exports.signout = function(req, res) {
 		method: 'post',
 	};
 
-	fetchUrl('http://52.87.224.145:3000/postRemoteLogout',
+	fetchUrl('http://' + config.ip + ':' + config.gatewayPort + '/postRemoteLogout',
 		options,
 		function(error, meta, body){
 			if (error) {

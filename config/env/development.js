@@ -5,6 +5,8 @@ module.exports = {
 	app: {
 		title: 'log-grower - Development Environment'
 	},
+	environment: 'dev',
+	ip: '0.0.0.0',
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',
 		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',

@@ -1,6 +1,8 @@
 'use strict';
 
-var api = 'http://' + config.ip + ':' + config.gatewayPort + '/';
+/*
+api is defined in 'layout.server.view.html' in express part of application
+*/
 
 //Logs service used to communicate Logs REST endpoints
 angular.module('logs')

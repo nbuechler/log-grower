@@ -63,14 +63,26 @@
 		var user = {{ user | json | safe }};
 	</script>
 
+	{% if process.env.NODE_ENV === 'development' %}
+	<!--Livereload script rendered -->
+	<!-- <script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script> -->
+		<script>
+			var api = 'http://0.0.0.0:3000/';
+		</script>
+	{% endif %}
+
+	{% if process.env.NODE_ENV === 'production' %}
+	<!--Livereload script rendered -->
+	<!-- <script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script> -->
+		<script>
+			var api = 'http://52.87.224.145:3000/';
+		</script>
+	{% endif %}
+
 	<!--Application JavaScript Files-->
     <!--Find jsFiles here: config/env/*.js file(s)-->
 	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
 
-	{% if process.env.NODE_ENV === 'development' %}
-	<!--Livereload script rendered -->
-	<!-- <script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script> -->
-	{% endif %}
 </body>
 
 </html>

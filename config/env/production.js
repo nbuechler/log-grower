@@ -1,8 +1,10 @@
 'use strict';
 
 module.exports = {
-	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || '52.87.224.145') + '/mean',
+	// db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || '52.87.224.145') + '/mean',
+	db: 'mongodb://0.0.0.0/mean-dev',
 	ip: '52.87.224.145',
+	environment: 'prod',
 	assets: {
 		lib: {
 			css: [

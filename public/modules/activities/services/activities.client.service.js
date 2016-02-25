@@ -1,6 +1,6 @@
 'use strict';
 
-var api = 'http://52.87.224.145:3000/';
+var api = 'http://' + config.ip + ':' + config.gatewayPort + '/';
 
 //Activities service used to communicate Activities REST endpoints
 angular.module('activities')

@@ -1,7 +1,7 @@
 run()
 {
     cd /webapps/log-grower/
-    nohup grunt >logfile.txt 2>&1 </dev/null &
+    nohup grunt prod >logfile.txt 2>&1 </dev/null &
     return 0
 }
 

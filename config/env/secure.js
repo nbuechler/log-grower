@@ -3,6 +3,7 @@
 module.exports = {
 	port: 443,
 	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://52.87.224.145/mean',
+	ip: '52.87.224.145',
 	assets: {
 		lib: {
 			css: [

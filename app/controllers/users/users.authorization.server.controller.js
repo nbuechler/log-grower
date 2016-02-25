@@ -5,6 +5,7 @@
  */
 var _ = require('lodash'),
 	mongoose = require('mongoose'),
+	config = require('../../../config/config'),
 	User = mongoose.model('User');
 
 /**

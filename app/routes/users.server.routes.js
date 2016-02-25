@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var passport = require('passport');
+var config = require('../../config/config');
 
 module.exports = function(app) {
 	// User Routes
@@ -26,8 +27,8 @@ module.exports = function(app) {
 	app.route('/auth/signout').get(users.signout);
 
 	// Setting the facebook oauth routes
-	app.get('http://52.87.224.145:3000/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_location'] }));
-	app.get('http://52.87.224.145:3000/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), function(req, res) {
+	app.get('http://' + config.ip + ':' + config.gatewayPort + '/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_location'] }));
+	app.get('http://' + config.ip + ':' + config.gatewayPort + '/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), function(req, res) {
 	  res.redirect(req.session.returnTo || '/');
 	});
 

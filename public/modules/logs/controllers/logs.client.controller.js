@@ -88,7 +88,7 @@ angular.module('logs').controller('LogsController',
 
 		// Archve existing Log
 		$scope.archive = function() {
-
+			
 			// TODO: add logic for archiving
 
 		};

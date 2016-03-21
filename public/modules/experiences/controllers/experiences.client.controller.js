@@ -61,19 +61,23 @@ angular.module('experiences').controller('ExperiencesController',
 
 		// Remove existing Experience
 		$scope.remove = function(experience) {
-			if ( experience ) {
-				experience.$remove();
+			/*
+			 * It makes more sense to archive and hide, then remove from the system.
+			 */
 
-				for (var i in $scope.experiences) {
-					if ($scope.experiences [i] === experience) {
-						$scope.experiences.splice(i, 1);
-					}
-				}
-			} else {
-				$scope.experience.$remove(function() {
+			// if ( experience ) {
+			// 	experience.$remove();
+			//
+			// 	for (var i in $scope.experiences) {
+			// 		if ($scope.experiences [i] === experience) {
+			// 			$scope.experiences.splice(i, 1);
+			// 		}
+			// 	}
+			// } else {
+			// 	$scope.experience.$remove(function() {
 					$location.path('experiences');
-				});
-			}
+			// 	});
+			// }
 		};
 
 		// Update existing Experience

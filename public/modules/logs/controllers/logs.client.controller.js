@@ -41,19 +41,23 @@ angular.module('logs').controller('LogsController',
 
 		// Remove existing Log
 		$scope.remove = function(log) {
-			if ( log ) {
-				log.$remove();
-
-				for (var i in $scope.logs) {
-					if ($scope.logs [i] === log) {
-						$scope.logs.splice(i, 1);
-					}
-				}
-			} else {
-				$scope.log.$remove(function() {
+			/*
+			 * It makes more sense to archive and hide, then remove from the system.
+			 */
+			 
+			// if ( log ) {
+			// 	log.$remove();
+			//
+			// 	for (var i in $scope.logs) {
+			// 		if ($scope.logs [i] === log) {
+			// 			$scope.logs.splice(i, 1);
+			// 		}
+			// 	}
+			// } else {
+			// 	$scope.log.$remove(function() {
 					$location.path('logs');
-				});
-			}
+			// 	});
+			// }
 		};
 
 		// Update existing Log

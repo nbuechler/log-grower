@@ -30,19 +30,23 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
 
 		// Remove existing Activity
 		$scope.remove = function(activity) {
-			if ( activity ) {
-				activity.$remove();
+			/*
+			 * It makes more sense to archive and hide, then remove from the system.
+			 */
 
-				for (var i in $scope.activities) {
-					if ($scope.activities [i] === activity) {
-						$scope.activities.splice(i, 1);
-					}
-				}
-			} else {
-				$scope.activity.$remove(function() {
+			// if ( activity ) {
+			// 	activity.$remove();
+			//
+			// 	for (var i in $scope.activities) {
+			// 		if ($scope.activities [i] === activity) {
+			// 			$scope.activities.splice(i, 1);
+			// 		}
+			// 	}
+			// } else {
+			// 	$scope.activity.$remove(function() {
 					$location.path('activities');
-				});
-			}
+			// 	});
+			// }
 		};
 
 		// Update existing Activity
@@ -57,6 +61,13 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+		};
+
+		// Archve existing Activity
+		$scope.archive = function() {
+
+			// TODO: add logic for archiving
+			
 		};
 
         // Set marker for creating new activity... for first time users

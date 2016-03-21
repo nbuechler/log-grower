@@ -111,6 +111,13 @@ angular.module('experiences').controller('ExperiencesController',
 			});
 		};
 
+		// Archve existing Experience
+		$scope.archive = function() {
+
+			// TODO: add logic for archiving
+
+		};
+
 		// Find a list of Experiences
 		$scope.find = function() {
 			$scope.experiences = Experiences.query();

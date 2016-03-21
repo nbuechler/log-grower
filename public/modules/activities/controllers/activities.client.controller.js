@@ -63,6 +63,13 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
 			});
 		};
 
+		// Archve existing Activity
+		$scope.archive = function() {
+
+			// TODO: add logic for archiving
+			
+		};
+
         // Set marker for creating new activity... for first time users
         $scope.displayFirstTime = true; //not used
 

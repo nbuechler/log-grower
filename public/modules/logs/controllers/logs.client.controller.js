@@ -44,7 +44,7 @@ angular.module('logs').controller('LogsController',
 			/*
 			 * It makes more sense to archive and hide, then remove from the system.
 			 */
-			 
+
 			// if ( log ) {
 			// 	log.$remove();
 			//
@@ -85,6 +85,13 @@ angular.module('logs').controller('LogsController',
 
         // Set marker for creating new log... for first time users
         $scope.displayFirstTime = true;
+
+		// Archve existing Log
+		$scope.archive = function() {
+
+			// TODO: add logic for archiving
+
+		};
 
 		$scope.find = function() {
 			$scope.logs = Logs.query();

@@ -63,6 +63,7 @@ angular.module('experiences').controller('ExperiencesController',
 		$scope.remove = function(experience) {
 			/*
 			 * It makes more sense to archive and hide, then remove from the system.
+			 * Kept Logic commented just in case
 			 */
 
 			// if ( experience ) {

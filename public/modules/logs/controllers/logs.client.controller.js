@@ -43,6 +43,7 @@ angular.module('logs').controller('LogsController',
 		$scope.remove = function(log) {
 			/*
 			 * It makes more sense to archive and hide, then remove from the system.
+			 * Kept Logic commented just in case
 			 */
 
 			// if ( log ) {
@@ -88,7 +89,7 @@ angular.module('logs').controller('LogsController',
 
 		// Archve existing Log
 		$scope.archive = function() {
-			
+
 			// TODO: add logic for archiving
 
 		};

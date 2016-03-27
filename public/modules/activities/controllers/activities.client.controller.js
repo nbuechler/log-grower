@@ -32,6 +32,7 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
 		$scope.remove = function(activity) {
 			/*
 			 * It makes more sense to archive and hide, then remove from the system.
+			 * Kept Logic commented just in case
 			 */
 
 			// if ( activity ) {
@@ -67,7 +68,7 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
 		$scope.archive = function() {
 
 			// TODO: add logic for archiving
-			
+
 		};
 
         // Set marker for creating new activity... for first time users

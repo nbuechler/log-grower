@@ -19,8 +19,11 @@
               </a>
               <br>
               <br>
-              <a class="btn btn-success" style="width: 100%;" data-ng-click="archive();">
+              <a class="btn btn-success" style="width: 100%;" data-ng-click="archive();" data-ng-show="(((authentication.user) && (authentication.user._id == activity.user._id))) && activity.archived == 0">
                   <i class="fa fa-file-archive-o"></i> Archive
+              </a>
+              <a class="btn btn-success" style="width: 100%;" data-ng-click="update();" data-ng-show="(((authentication.user) && (authentication.user._id == activity.user._id))) && activity.archived == 1">
+                  <i class="fa fa-file-o"></i> Restore
               </a>
           </div>
       </div>

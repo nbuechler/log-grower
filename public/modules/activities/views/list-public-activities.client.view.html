@@ -20,6 +20,9 @@
                     <div class="badge" ng-show="{{(activity.user._id === authentication.user._id)}}">
                         My Activity
                     </div>
+                    <div class="badge pull-right" ng-show="{{activity.archived}}">
+                        Archived
+                    </div>
 
                 <hr>
                 <div style="color: white;">

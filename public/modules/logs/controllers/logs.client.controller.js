@@ -13,19 +13,19 @@ angular.module('logs').controller('LogsController',
 			// Create new Log object
 			var log = new Logs ({
 				name: this.name,
-                physicContent: this.physicContent,
-                emotionContent: this.emotionContent,
-                academicContent: this.academicContent,
-                communeContent: this.communeContent,
-                etherContent: this.etherContent,
-                physicContentLength: this.physicContent ? this.physicContent.length : 0,
-                emotionContentLength: this.emotionContent ? this.emotionContent.length : 0,
-                academicContentLength: this.academicContent ? this.academicContent.length : 0,
-                communeContentLength: this.communeContent ? this.communeContent.length : 0,
-                etherContentLength: this.etherContent ? this.etherContent.length : 0,
-                privacy: this.privacy ? this.privacy : 0,
-								firstExperience: $scope.selectedExperience ? $scope.selectedExperience._id : null,
-								user: {_id: localStorage.getItem('_id')}
+        physicContent: this.physicContent,
+        emotionContent: this.emotionContent,
+        academicContent: this.academicContent,
+        communeContent: this.communeContent,
+        etherContent: this.etherContent,
+        physicContentLength: this.physicContent ? this.physicContent.length : 0,
+        emotionContentLength: this.emotionContent ? this.emotionContent.length : 0,
+        academicContentLength: this.academicContent ? this.academicContent.length : 0,
+        communeContentLength: this.communeContent ? this.communeContent.length : 0,
+        etherContentLength: this.etherContent ? this.etherContent.length : 0,
+        privacy: this.privacy ? this.privacy : 0,
+				firstExperience: $scope.selectedExperience ? $scope.selectedExperience._id : null,
+				user: {_id: localStorage.getItem('_id')}
 			});
 
 			// Redirect after save
@@ -72,27 +72,46 @@ angular.module('logs').controller('LogsController',
       $scope.log.etherContentLength = $scope.log.etherContent ? $scope.log.etherContent.length : 0;
 
 			$scope.log.privacy = $scope.log.privacy ? $scope.log.privacy : 0;
+			$scope.log.archived = 0;
 
       var log = $scope.log;
 					log.firstExperience = $scope.selectedExperience ? $scope.selectedExperience._id : null;
 
 			log.$update(function() {
-
+				window.location.reload(); // TODO: fix this hack. It's a hack because it forces an update so angular works.
 				$location.path('logs/' + log._id);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
 		};
 
-        // Set marker for creating new log... for first time users
-        $scope.displayFirstTime = true;
-
 		// Archve existing Log
 		$scope.archive = function() {
 
-			// TODO: add logic for archiving
+			//Calculate log lengths for logs that don't have log lengths
+      $scope.log.physicContentLength = $scope.log.physicContent ? $scope.log.physicContent.length : 0;
+      $scope.log.emotionContentLength = $scope.log.emotionContent ? $scope.log.emotionContent.length : 0;
+      $scope.log.academicContentLength = $scope.log.academicContent ? $scope.log.academicContent.length : 0;
+      $scope.log.communeContentLength = $scope.log.communeContent ? $scope.log.communeContent.length : 0;
+      $scope.log.etherContentLength = $scope.log.etherContent ? $scope.log.etherContent.length : 0;
+
+			$scope.log.privacy = $scope.log.privacy ? $scope.log.privacy : 0;
+			$scope.log.archived = 1;
+
+      var log = $scope.log;
+					log.firstExperience = $scope.selectedExperience ? $scope.selectedExperience._id : null;
+
+			log.$update(function() {
+				$location.path('logs/' + log._id);
+				window.location.reload(); // TODO: fix this hack. It's a hack because it forces an update so angular works.
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
 
 		};
+
+    // Set marker for creating new log... for first time users
+    $scope.displayFirstTime = true;
 
 		$scope.find = function() {
 			$scope.logs = Logs.query();
@@ -130,17 +149,17 @@ angular.module('logs').controller('LogsController',
 
 		//TODO: Remove this code below because I think it is dead. It served its purpose well.
 
-        // Show Public Log defaults to false
-        $scope.hidePublic = true;
+    // Show Public Log defaults to false
+    $scope.hidePublic = true;
 
-        // Toggle Public Log
-        $scope.togglePublic = function() {
-            if($scope.hidePublic){
-                $scope.hidePublic = false;
-            } else {
-                $scope.hidePublic = true;
-            }
-        };
+    // Toggle Public Log
+    $scope.togglePublic = function() {
+        if($scope.hidePublic){
+            $scope.hidePublic = false;
+        } else {
+            $scope.hidePublic = true;
+        }
+    };
 
 	}
 ]);

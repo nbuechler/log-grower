@@ -11,10 +11,11 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
 			// Create new Activity object
 			var activity = new Activities ({
 				name: this.name,
-                description: this.description,
-                importance: this.importance ? this.importance : 50,
-								privacy: this.privacy ? this.privacy : 0,
-								user: {_id: localStorage.getItem('_id')}
+        description: this.description,
+        importance: this.importance ? this.importance : 50,
+				privacy: this.privacy ? this.privacy : 0,
+				archived: this.archived ? this.archived : 0,
+				user: {_id: localStorage.getItem('_id')}
 			});
 
 			// Redirect after save
@@ -54,11 +55,13 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
 		$scope.update = function() {
 
 			$scope.activity.privacy = $scope.activity.privacy ? $scope.activity.privacy : 0;
+			$scope.activity.archived = 0;
 
 			var activity = $scope.activity;
 
 			activity.$update(function() {
 				$location.path('activities/' + activity._id);
+				window.location.reload(); // TODO: fix this hack. It's a hack because it forces an update so angular works.
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -67,12 +70,22 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
 		// Archve existing Activity
 		$scope.archive = function() {
 
-			// TODO: add logic for archiving
+			$scope.activity.privacy = $scope.activity.privacy ? $scope.activity.privacy : 0;
+			$scope.activity.archived = 1;
+
+			var activity = $scope.activity;
+
+			activity.$update(function() {
+				$location.path('activities/' + activity._id);
+				window.location.reload(); // TODO: fix this hack. It's a hack because it forces an update so angular works.
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
 
 		};
 
-        // Set marker for creating new activity... for first time users
-        $scope.displayFirstTime = true; //not used
+    // Set marker for creating new activity... for first time users
+    $scope.displayFirstTime = true; //not used
 
 		// Find a list of Activities
 		$scope.find = function() {
@@ -91,21 +104,21 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
 			});
 		};
 
-        /*
-         * Toggle button not used currently... but there is logic that can be used to toggle.
-         */
+    /*
+     * Toggle button not used currently... but there is logic that can be used to toggle.
+     */
 
-        // Show Public Log defaults to false
-        $scope.hidePublic = true;
+    // Show Public Log defaults to false
+    $scope.hidePublic = true;
 
-        // Toggle Public Log
-        $scope.togglePublic = function() {
-            if($scope.hidePublic){
-                $scope.hidePublic = false;
-            } else {
-                $scope.hidePublic = true;
-            }
-        };
+    // Toggle Public Log
+    $scope.togglePublic = function() {
+        if($scope.hidePublic){
+            $scope.hidePublic = false;
+        } else {
+            $scope.hidePublic = true;
+        }
+    };
 
 	}
 ]);

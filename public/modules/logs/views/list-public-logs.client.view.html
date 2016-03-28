@@ -16,6 +16,9 @@
                 <div class="badge" ng-show="{{(log.user._id === authentication.user._id)}}">
                     My Log
                 </div>
+                <div class="badge pull-right" ng-show="{{log.archived}}">
+                    Archived
+                </div>
                 <h4 class="list-group-item-heading" data-ng-bind="log.name"></h4>
                 <div class="" style="text-align: center;">
                     <span ng-if="log.physicContent.length > 0" class="physicBox globalPadding">.</span>

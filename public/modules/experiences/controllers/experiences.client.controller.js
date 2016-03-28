@@ -37,15 +37,16 @@ angular.module('experiences').controller('ExperiencesController',
 			// Create new Experience object
 			var experience = new Experiences ({
 				name: $scope.name,
-								experienceTime: $scope.selectedTime ? $scope.selectedTime.name : null,
-								pronoun: $scope.selectedPronoun ? $scope.selectedPronoun.name : null,
-								pastTenseVerb: $scope.selectedVerb ? $scope.selectedVerb : null,
-								description: this.description,
-								importance: this.importance,
-								privacy: this.privacy ? this.privacy : 0,
-								firstActivity: $scope.selectedActivity ? $scope.selectedActivity._id : null,
-								seconds: calculatedSeconds ? calculatedSeconds : 0,
-								user: {_id: localStorage.getItem('_id')}
+				experienceTime: $scope.selectedTime ? $scope.selectedTime.name : null,
+				pronoun: $scope.selectedPronoun ? $scope.selectedPronoun.name : null,
+				pastTenseVerb: $scope.selectedVerb ? $scope.selectedVerb : null,
+				description: this.description,
+				importance: this.importance,
+				privacy: this.privacy ? this.privacy : 0,
+				archived: this.archived ? this.archived : 0,
+				firstActivity: $scope.selectedActivity ? $scope.selectedActivity._id : null,
+				seconds: calculatedSeconds ? calculatedSeconds : 0,
+				user: {_id: localStorage.getItem('_id')}
 			});
 
 			// Redirect after save
@@ -102,11 +103,14 @@ angular.module('experiences').controller('ExperiencesController',
 					experience.experienceTime = $scope.selectedTime ? $scope.selectedTime.name : null,
 					experience.pronoun = $scope.selectedPronoun ? $scope.selectedPronoun.name : null,
 					experience.pastTenseVerb = $scope.selectedVerb ? $scope.selectedVerb : null,
+					experience.privacy = $scope.experience.privacy ? $scope.experience.privacy : 0,
+					experience.archived = 0,
 					/*jshint -W030 */
 					experience.seconds = calculatedSeconds;
 
 			experience.$update(function() {
 				$location.path('experiences/' + experience._id);
+				window.location.reload(); // TODO: fix this hack. It's a hack because it forces an update so angular works.
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -115,7 +119,36 @@ angular.module('experiences').controller('ExperiencesController',
 		// Archve existing Experience
 		$scope.archive = function() {
 
-			// TODO: add logic for archiving
+			/*
+			 * calculatedSeconds is the amount of seconds for the experience.
+			 */
+			var calculatedSeconds = 0,
+					h = ($scope.hours ? $scope.hours : 0),
+					m = ($scope.minutes ? $scope.minutes : 0),
+					s = ($scope.secs ? $scope.secs : 0);
+					calculatedSeconds = calculatedSeconds + (h * 60 * 60);
+					calculatedSeconds = calculatedSeconds + (m * 60);
+					calculatedSeconds = calculatedSeconds + (s);
+
+
+			var experience = $scope.experience;
+					experience.name = $scope.name ? $scope.name : experience.name,
+					experience.firstActivity = $scope.selectedActivity ? $scope.selectedActivity._id : null,
+					experience.experienceTime = $scope.selectedTime ? $scope.selectedTime.name : null,
+					experience.pronoun = $scope.selectedPronoun ? $scope.selectedPronoun.name : null,
+					experience.pastTenseVerb = $scope.selectedVerb ? $scope.selectedVerb : null,
+					experience.privacy = $scope.experience.privacy ? $scope.experience.privacy : 0,
+					experience.archived = 1,
+					/*jshint -W030 */
+					experience.seconds = calculatedSeconds;
+
+			experience.$update(function() {
+				$location.path('experiences/' + experience._id);
+				window.location.reload(); // TODO: fix this hack. It's a hack because it forces an update so angular works.
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+
 
 		};
 

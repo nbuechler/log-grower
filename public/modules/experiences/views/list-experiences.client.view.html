@@ -4,12 +4,15 @@
     </div>
     <div class="list-group" style="margin-bottom: 100px;">
         <a data-ng-repeat="experience in experiences" data-ng-href="#!/experiences/{{experience._id}}" class="list-group-item">
-          <h6 style="text-align: right; color: white;" ng-show="{{(experience.privacy === 0)}}">
+          <div class="badge" style="text-align: right; color: white;" ng-show="{{(experience.privacy === 0)}}">
               Private
-          </h6>
-          <h6 style="text-align: right; color: white;" ng-show="{{(experience.privacy === 1)}}">
+          </div>
+          <div class="badge" style="text-align: right; color: white;" ng-show="{{(experience.privacy === 1)}}">
               Public
-          </h6>
+          </div>
+          <div class="badge pull-right" ng-show="{{experience.archived}}">
+              Archived
+          </div>
     			<small class="list-group-item-text">
     				Posted on
     				<span data-ng-bind="experience.created | date:'medium'"></span>

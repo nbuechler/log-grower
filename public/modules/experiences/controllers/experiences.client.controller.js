@@ -10,12 +10,13 @@ angular.module('experiences').controller('ExperiencesController',
 
 		$scope.updateName = function() {
 			//Set the experience name to the sum of its parts
-			if($scope.selectedTime && $scope.selectedActivity && $scope.selectedPronoun && $scope.selectedVerb) {
+			if($scope.selectedTime && $scope.selectedActivity && $scope.selectedPronoun && $scope.selectedVerb && $scope.selected2Activity) {
 				$scope.name =
 					$scope.selectedTime.name + ' ' +
 					$scope.selectedActivity.name + ' ' +
 					$scope.selectedPronoun.name + ' ' +
-					$scope.selectedVerb;
+					$scope.selectedVerb + ' ' +
+					$scope.selected2Activity.name;
 			}
 
 		};
@@ -45,6 +46,7 @@ angular.module('experiences').controller('ExperiencesController',
 				privacy: this.privacy ? this.privacy : 0,
 				archived: this.archived ? this.archived : 0,
 				firstActivity: $scope.selectedActivity ? $scope.selectedActivity._id : null,
+				secondActivity: $scope.selected2Activity ? $scope.selected2Activity._id : null,
 				seconds: calculatedSeconds ? calculatedSeconds : 0,
 				user: {_id: localStorage.getItem('_id')}
 			});
@@ -100,6 +102,7 @@ angular.module('experiences').controller('ExperiencesController',
 			var experience = $scope.experience;
 					experience.name = $scope.name ? $scope.name : experience.name,
 					experience.firstActivity = $scope.selectedActivity ? $scope.selectedActivity._id : null,
+					experience.secondActivity = $scope.selected2Activity ? $scope.selected2Activity._id : null,
 					experience.experienceTime = $scope.selectedTime ? $scope.selectedTime.name : null,
 					experience.pronoun = $scope.selectedPronoun ? $scope.selectedPronoun.name : null,
 					experience.pastTenseVerb = $scope.selectedVerb ? $scope.selectedVerb : null,
@@ -134,6 +137,7 @@ angular.module('experiences').controller('ExperiencesController',
 			var experience = $scope.experience;
 					experience.name = $scope.name ? $scope.name : experience.name,
 					experience.firstActivity = $scope.selectedActivity ? $scope.selectedActivity._id : null,
+					experience.secondActivity = $scope.selected2Activity ? $scope.selected2Activity._id : null,
 					experience.experienceTime = $scope.selectedTime ? $scope.selectedTime.name : null,
 					experience.pronoun = $scope.selectedPronoun ? $scope.selectedPronoun.name : null,
 					experience.pastTenseVerb = $scope.selectedVerb ? $scope.selectedVerb : null,
@@ -197,8 +201,9 @@ angular.module('experiences').controller('ExperiencesController',
 					}
 				}
 
-				//Activity
+				//Activities
 				$scope.selectedActivity = exp.firstActivity;
+				$scope.selected2Activity = exp.secondActivity;
 
 				//Pronoun
 				//Refactor this if there are more dynamically built experiences

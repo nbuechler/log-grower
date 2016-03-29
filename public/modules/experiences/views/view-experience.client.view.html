@@ -94,7 +94,7 @@
 
 							<md-toolbar style="background: #FEFEFE; color: #222222; z-index: 0;">
 								<div class="md-toolbar-tools">
-									<h2 class="md-flex">Activity</h2>
+									<h2 class="md-flex">First Activity</h2>
 								</div>
 							</md-toolbar>
 							<md-content layout-padding style="height: auto; max-height: 300px; padding: 24px; background: #333333">
@@ -113,6 +113,39 @@
 											</p>
 											<p style="color: gray;">
 												Activity started on {{ experience.firstActivity.created  | date:'mediumDate'}}.
+											</p>
+
+										</div>
+									</md-list-item>
+							</md-content>
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-9" data-ng-show="((authentication.user) && (authentication.user._id == experience.secondActivity.user)) || experience.secondActivity.privacy == 1">
+
+							<md-toolbar style="background: #FEFEFE; color: #222222; z-index: 0;">
+								<div class="md-toolbar-tools">
+									<h2 class="md-flex">Second Activity</h2>
+								</div>
+							</md-toolbar>
+							<md-content layout-padding style="height: auto; max-height: 300px; padding: 24px; background: #333333">
+									<h6 style="color: gray; text-align: right;">Just for reference, this is the activity this experience is associated with.</h6>
+									<md-list-item class="md-3-line">
+										<div class="md-list-item-text">
+											<br>
+											<h3>
+												<a data-ng-href="#!/activities/{{experience.secondActivity._id}}">
+													{{ experience.secondActivity.name }}
+												</a>
+												<span style="color: #444444;">{{' ( Importance - ' + experience.secondActivity.importance + ' )'}}</span>
+											</h3>
+											<p style="color: white;">
+												{{ experience.secondActivity.description}}.
+											</p>
+											<p style="color: gray;">
+												Activity started on {{ experience.secondActivity.created  | date:'mediumDate'}}.
 											</p>
 
 										</div>

@@ -73,7 +73,7 @@
                                          text-align: center;
                                          color: #222;"
                                    ng-options="item as item.name for item in experiences track by item._id"
-                                   ng-model="selectedExperience">
+                                   ng-model="selectedExperience" required>
                             <option style="color: white;" value="" disabled="">Is this part of an experience?</option>
                           </select>
                       </div>
